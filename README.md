@@ -26,6 +26,11 @@ Delete Feature
 DELETE /features/{id}
 
 
+entity
+repository
+service
+controller
+annotation
+aspect
+config
 
-//Any assumptions or design decisions you made
-//List of feature with flag, what it controls and where in code it is implemented
