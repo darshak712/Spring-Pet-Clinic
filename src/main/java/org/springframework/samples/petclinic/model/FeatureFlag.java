@@ -8,32 +8,27 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="feature_flags")
+@Table(name="feature_flag")
 public class FeatureFlag {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(unique=true)
-	private String featureName;
+	@Column(unique=true,nullable=false)
+	private String name;
 	
-	private boolean enabled;
+	private boolean globalEnable=true;
+	
+	private int rolloutPercentage=100;
+	
+	private String whitelist;
+	private String blacklist;
+	
 	
 	private String description;
 
-	public FeatureFlag() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public FeatureFlag(Long id, String featureName, boolean enabled, String description) {
-		super();
-		this.id = id;
-		this.featureName = featureName;
-		this.enabled = enabled;
-		this.description = description;
-	}
+	
 
 	public Long getId() {
 		return id;
@@ -43,20 +38,44 @@ public class FeatureFlag {
 		this.id = id;
 	}
 
-	public String getFeatureName() {
-		return featureName;
+	public String getName() {
+		return name;
 	}
 
-	public void setFeatureName(String featureName) {
-		this.featureName = featureName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public boolean isEnabled() {
-		return enabled;
+	public boolean isGlobalEnable() {
+		return globalEnable;
 	}
 
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
+	public void setGlobalEnable(boolean globalEnable) {
+		this.globalEnable = globalEnable;
+	}
+
+	public int getRolloutPercentage() {
+		return rolloutPercentage;
+	}
+
+	public void setRolloutPercentage(int rolloutPercentage) {
+		this.rolloutPercentage = rolloutPercentage;
+	}
+
+	public String getWhitelist() {
+		return whitelist;
+	}
+
+	public void setWhitelist(String whitelist) {
+		this.whitelist = whitelist;
+	}
+
+	public String getBlacklist() {
+		return blacklist;
+	}
+
+	public void setBlacklist(String blacklist) {
+		this.blacklist = blacklist;
 	}
 
 	public String getDescription() {
@@ -66,7 +85,7 @@ public class FeatureFlag {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	
 	
 }

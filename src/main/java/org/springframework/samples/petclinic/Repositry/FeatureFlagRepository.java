@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FeatureFlagRepository extends JpaRepository<FeatureFlag,Long> 
 {
-Optional<FeatureFlag> findByFeatureName(String featureName);
+Optional<FeatureFlag> findByName(String featureName);
 	
 }
